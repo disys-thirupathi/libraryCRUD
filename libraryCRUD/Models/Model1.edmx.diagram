@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="261f71d1490943d1a1c422a0d7c9dde9" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="appdev_trainingModel.book_thirupa" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="appdev_trainingModel.student_detail_thirupa" Width="1.5" PointX="5.875" PointY="0.5" />
+        <AssociationConnector Association="appdev_trainingModel.FK_student_detail_thirupa_student_detail_thirupa" />
+        <EntityTypeShape EntityType="appdev_trainingModel.borrowdetails_thirupa" Width="1.5" PointX="3.375" PointY="3.75" />
+        <AssociationConnector Association="appdev_trainingModel.FK_borrowdetails_thirupa_borrowdetails_thirupa" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

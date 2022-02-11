@@ -1,0 +1,73 @@
+﻿@model libraryCRUD.Models.book_thirupa
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete <b>@Html.DisplayFor(model => model.bookname)</b>?</h3>
+<div>
+    <h4><b></b></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+Book ID        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookid)
+        </dd>
+
+        <dt>
+Book Name        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookname)
+        </dd>
+
+        <dt>
+Book Pages        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookpages)
+        </dd>
+
+        <dt>
+Book Author        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookauthor)
+        </dd>
+
+        <dt>
+Book Edition        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookedition)
+        </dd>
+
+        <dt>
+Year of Publish        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookyearofpublish)
+        </dd>
+
+        <dt>
+Book Copies        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numberofcopies)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <button type="reset" class=" btn btn-default" href="https://localhost:44309/book_thirupa/Index">Back to List</button>
+        </div>
+    }
+</div>

@@ -1,0 +1,57 @@
+﻿@model libraryCRUD.Models.borrowdetails_thirupa
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+        <h4></h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="control-label col-md-2"><b>Student ID</b></div>            
+        <div class="col-md-10">
+                @Html.EditorFor(model => model.Studentid, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Studentid, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+
+        <div class="form-group">
+            <div class="control-label col-md-2"><b>Book Name</b></div>            <div class="col-md-10">
+                @Html.EditorFor(model => model.bookname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.bookname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2"><b>Book Borrow Date</b></div>            <div class="col-md-10">
+                @Html.EditorFor(model => model.bookborrowdate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.bookborrowdate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2"><b>Book Return Date</b></div>            <div class="col-md-10">
+                @Html.EditorFor(model => model.bookreturndate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.bookreturndate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>          
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

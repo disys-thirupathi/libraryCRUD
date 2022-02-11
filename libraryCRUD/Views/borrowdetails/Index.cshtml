@@ -1,0 +1,50 @@
+﻿@model IEnumerable<libraryCRUD.Models.borrowdetails_thirupa>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+Student Id         </th>
+        <th>
+Book Name        </th>
+        <th>
+Borrow Date        </th>
+        <th>
+Return Date        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Studentid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookborrowdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookreturndate)
+        </td>
+        <td>
+            <a><span class="glyphicon glyphicon-pencil"></span></a>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Studentid }) |
+            <a><span class="glyphicon glyphicon-info-sign"></span></a>
+            @Html.ActionLink("Details", "Details", new { id = item.Studentid }) |
+            <a><span class="glyphicon glyphicon-remove-circle"></span></a>
+            @Html.ActionLink("Delete", "Delete", new { id = item.Studentid })
+        </td>
+    </tr>
+}
+
+</table>

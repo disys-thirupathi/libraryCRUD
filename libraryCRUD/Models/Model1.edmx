@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="appdev_trainingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="book_thirupa">
+          <Key>
+            <PropertyRef Name="bookid" />
+          </Key>
+          <Property Name="bookid" Type="int" Nullable="false" />
+          <Property Name="bookname" Type="varchar" MaxLength="50" />
+          <Property Name="bookpages" Type="int" />
+          <Property Name="bookauthor" Type="varchar" MaxLength="50" />
+          <Property Name="bookedition" Type="int" />
+          <Property Name="bookyearofpublish" Type="int" />
+          <Property Name="numberofcopies" Type="int" />
+        </EntityType>
+        <EntityType Name="borrowdetails_thirupa">
+          <Key>
+            <PropertyRef Name="Studentid" />
+          </Key>
+          <Property Name="Studentid" Type="int" Nullable="false" />
+          <Property Name="bookname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="bookborrowdate" Type="date" Nullable="false" />
+          <Property Name="bookreturndate" Type="date" />
+        </EntityType>
+        <EntityType Name="student_detail_thirupa">
+          <Key>
+            <PropertyRef Name="studentid" />
+          </Key>
+          <Property Name="studentid" Type="int" Nullable="false" />
+          <Property Name="studentname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="st_depart" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="st_email" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_borrowdetails_thirupa_borrowdetails_thirupa">
+          <End Role="borrowdetails_thirupa" Type="Self.borrowdetails_thirupa" Multiplicity="1" />
+          <End Role="borrowdetails_thirupa1" Type="Self.borrowdetails_thirupa" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="borrowdetails_thirupa">
+              <PropertyRef Name="Studentid" />
+            </Principal>
+            <Dependent Role="borrowdetails_thirupa1">
+              <PropertyRef Name="Studentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_student_detail_thirupa_student_detail_thirupa">
+          <End Role="student_detail_thirupa" Type="Self.student_detail_thirupa" Multiplicity="1" />
+          <End Role="student_detail_thirupa1" Type="Self.student_detail_thirupa" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="student_detail_thirupa">
+              <PropertyRef Name="studentid" />
+            </Principal>
+            <Dependent Role="student_detail_thirupa1">
+              <PropertyRef Name="studentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="appdev_trainingModelStoreContainer">
+          <EntitySet Name="book_thirupa" EntityType="Self.book_thirupa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="borrowdetails_thirupa" EntityType="Self.borrowdetails_thirupa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="student_detail_thirupa" EntityType="Self.student_detail_thirupa" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_borrowdetails_thirupa_borrowdetails_thirupa" Association="Self.FK_borrowdetails_thirupa_borrowdetails_thirupa">
+            <End Role="borrowdetails_thirupa" EntitySet="borrowdetails_thirupa" />
+            <End Role="borrowdetails_thirupa1" EntitySet="borrowdetails_thirupa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_student_detail_thirupa_student_detail_thirupa" Association="Self.FK_student_detail_thirupa_student_detail_thirupa">
+            <End Role="student_detail_thirupa" EntitySet="student_detail_thirupa" />
+            <End Role="student_detail_thirupa1" EntitySet="student_detail_thirupa" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="appdev_trainingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="book_thirupa">
+          <Key>
+            <PropertyRef Name="bookid" />
+          </Key>
+          <Property Name="bookid" Type="Int32" Nullable="false" />
+          <Property Name="bookname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bookpages" Type="Int32" />
+          <Property Name="bookauthor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bookedition" Type="Int32" />
+          <Property Name="bookyearofpublish" Type="Int32" />
+          <Property Name="numberofcopies" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="appdev_trainingDb" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="book_thirupa" EntityType="Self.book_thirupa" />
+          <EntitySet Name="student_detail_thirupa" EntityType="appdev_trainingModel.student_detail_thirupa" />
+          <AssociationSet Name="FK_student_detail_thirupa_student_detail_thirupa" Association="appdev_trainingModel.FK_student_detail_thirupa_student_detail_thirupa">
+            <End Role="student_detail_thirupa" EntitySet="student_detail_thirupa" />
+            <End Role="student_detail_thirupa1" EntitySet="student_detail_thirupa" />
+          </AssociationSet>
+          <EntitySet Name="borrowdetails_thirupa" EntityType="appdev_trainingModel.borrowdetails_thirupa" />
+          <AssociationSet Name="FK_borrowdetails_thirupa_borrowdetails_thirupa" Association="appdev_trainingModel.FK_borrowdetails_thirupa_borrowdetails_thirupa">
+            <End Role="borrowdetails_thirupa" EntitySet="borrowdetails_thirupa" />
+            <End Role="borrowdetails_thirupa1" EntitySet="borrowdetails_thirupa" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="student_detail_thirupa">
+          <Key>
+            <PropertyRef Name="studentid" />
+          </Key>
+          <Property Name="studentid" Type="Int32" Nullable="false" />
+          <Property Name="studentname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="st_depart" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="st_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="student_detail_thirupa1" Relationship="appdev_trainingModel.FK_student_detail_thirupa_student_detail_thirupa" FromRole="student_detail_thirupa" ToRole="student_detail_thirupa1" />
+          <NavigationProperty Name="student_detail_thirupa2" Relationship="appdev_trainingModel.FK_student_detail_thirupa_student_detail_thirupa" FromRole="student_detail_thirupa1" ToRole="student_detail_thirupa" />
+        </EntityType>
+        <Association Name="FK_student_detail_thirupa_student_detail_thirupa">
+          <End Type="appdev_trainingModel.student_detail_thirupa" Role="student_detail_thirupa" Multiplicity="1" />
+          <End Type="appdev_trainingModel.student_detail_thirupa" Role="student_detail_thirupa1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="student_detail_thirupa">
+              <PropertyRef Name="studentid" />
+            </Principal>
+            <Dependent Role="student_detail_thirupa1">
+              <PropertyRef Name="studentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="borrowdetails_thirupa">
+          <Key>
+            <PropertyRef Name="Studentid" />
+          </Key>
+          <Property Name="Studentid" Type="Int32" Nullable="false" />
+          <Property Name="bookname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bookborrowdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="bookreturndate" Type="DateTime" Nullable="true" Precision="0" />
+          <NavigationProperty Name="borrowdetails_thirupa1" Relationship="appdev_trainingModel.FK_borrowdetails_thirupa_borrowdetails_thirupa" FromRole="borrowdetails_thirupa" ToRole="borrowdetails_thirupa1" />
+          <NavigationProperty Name="borrowdetails_thirupa2" Relationship="appdev_trainingModel.FK_borrowdetails_thirupa_borrowdetails_thirupa" FromRole="borrowdetails_thirupa1" ToRole="borrowdetails_thirupa" />
+        </EntityType>
+        <Association Name="FK_borrowdetails_thirupa_borrowdetails_thirupa">
+          <End Type="appdev_trainingModel.borrowdetails_thirupa" Role="borrowdetails_thirupa" Multiplicity="1" />
+          <End Type="appdev_trainingModel.borrowdetails_thirupa" Role="borrowdetails_thirupa1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="borrowdetails_thirupa">
+              <PropertyRef Name="Studentid" />
+            </Principal>
+            <Dependent Role="borrowdetails_thirupa1">
+              <PropertyRef Name="Studentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="appdev_trainingModelStoreContainer" CdmEntityContainer="appdev_trainingDb">
+          <EntitySetMapping Name="book_thirupa">
+            <EntityTypeMapping TypeName="appdev_trainingModel.book_thirupa">
+              <MappingFragment StoreEntitySet="book_thirupa">
+                <ScalarProperty Name="bookid" ColumnName="bookid" />
+                <ScalarProperty Name="bookname" ColumnName="bookname" />
+                <ScalarProperty Name="bookpages" ColumnName="bookpages" />
+                <ScalarProperty Name="bookauthor" ColumnName="bookauthor" />
+                <ScalarProperty Name="bookedition" ColumnName="bookedition" />
+                <ScalarProperty Name="bookyearofpublish" ColumnName="bookyearofpublish" />
+                <ScalarProperty Name="numberofcopies" ColumnName="numberofcopies" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="student_detail_thirupa">
+            <EntityTypeMapping TypeName="appdev_trainingModel.student_detail_thirupa">
+              <MappingFragment StoreEntitySet="student_detail_thirupa">
+                <ScalarProperty Name="st_email" ColumnName="st_email" />
+                <ScalarProperty Name="st_depart" ColumnName="st_depart" />
+                <ScalarProperty Name="studentname" ColumnName="studentname" />
+                <ScalarProperty Name="studentid" ColumnName="studentid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="borrowdetails_thirupa">
+            <EntityTypeMapping TypeName="appdev_trainingModel.borrowdetails_thirupa">
+              <MappingFragment StoreEntitySet="borrowdetails_thirupa">
+                <ScalarProperty Name="bookreturndate" ColumnName="bookreturndate" />
+                <ScalarProperty Name="bookborrowdate" ColumnName="bookborrowdate" />
+                <ScalarProperty Name="bookname" ColumnName="bookname" />
+                <ScalarProperty Name="Studentid" ColumnName="Studentid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

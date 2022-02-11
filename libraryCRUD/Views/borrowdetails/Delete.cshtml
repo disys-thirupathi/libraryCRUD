@@ -1,0 +1,53 @@
+﻿@model libraryCRUD.Models.borrowdetails_thirupa
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete details?</h3>
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+Student ID        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Studentid)
+        </dd>
+
+        <dt>
+Book Name        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookname)
+        </dd>
+
+        <dt>
+Book Borrow Date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookborrowdate)
+        </dd>
+
+        <dt>
+Book Return Date        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookreturndate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
